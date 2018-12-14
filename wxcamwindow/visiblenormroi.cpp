@@ -436,7 +436,7 @@ void CVisibleNormROI::OnPaint0 (const CvSize& winSize, CIplImage *pImg)
 
 	if (m_cursorOver>= OVER_LEFT_LINE && m_cursorOver<= OVER_BR_CORNER)  thickness= 3;
 	else thickness= 1;
-	cvRectangle (pImg->ptr(), p1, p2, CV_RGB( 255-m_degradation, 255-m_degradation, m_degradation ), thickness, 4);
+	cvRectangle (pImg->ptr(), p1, p2, cv::Scalar( 255-m_degradation, 255-m_degradation, m_degradation ), thickness, 4);
 
 	// Affordances
 	CvPoint pa, pb;
@@ -445,14 +445,14 @@ void CVisibleNormROI::OnPaint0 (const CvSize& winSize, CIplImage *pImg)
 	pb.x= p1.x + thickness;
 	pb.y= p1.y + thickness;
 
-	cvRectangle (pImg->ptr(), pa, pb, CV_RGB( 255-m_degradation, 255-m_degradation, m_degradation ), CV_FILLED );
+	cvRectangle (pImg->ptr(), pa, pb, cv::Scalar( 255-m_degradation, 255-m_degradation, m_degradation ), CV_FILLED );
 
 	pa.x= p2.x - thickness;
 	pa.y= p2.y - thickness;
 	pb.x= p2.x + thickness;
 	pb.y= p2.y + thickness;
 
-	cvRectangle (pImg->ptr(), pa, pb, CV_RGB( 255-m_degradation, 255-m_degradation, m_degradation ), CV_FILLED );
+	cvRectangle (pImg->ptr(), pa, pb, cv::Scalar( 255-m_degradation, 255-m_degradation, m_degradation ), CV_FILLED );
 
 	GetDirectionSegment (winSize, p1, p2);
 	
@@ -460,7 +460,7 @@ void CVisibleNormROI::OnPaint0 (const CvSize& winSize, CIplImage *pImg)
 	{
 		if (m_cursorOver== OVER_ORIENTER)  thickness= 3;
 		else thickness= 1;
-		cvLine (pImg->ptr(), p1, p2, CV_RGB( 255,255,0 ), thickness, CV_AA );
-		cvCircle(pImg->ptr(), p2, SELECTION_TOLERANCE, CV_RGB( 255,255,0 ), thickness, CV_AA );
+		cvLine (pImg->ptr(), p1, p2, cv::Scalar( 255,255,0 ), thickness, CV_AA );
+		cvCircle(pImg->ptr(), p2, SELECTION_TOLERANCE, cv::Scalar( 255,255,0 ), thickness, CV_AA );
 	}
 }
